@@ -12,9 +12,11 @@
         android:id="@+id/signout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
         android:text="Sign Out"
+        android:textColor="#FFFFFF"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="62dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="62dp" />
 
 </android.support.constraint.ConstraintLayout>
