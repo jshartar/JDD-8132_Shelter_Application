@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "983061287115",
+    "firebase_url": "https://petconnect-55721.firebaseio.com",
+    "project_id": "petconnect-55721",
+    "storage_bucket": "petconnect-55721.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983061287115:android:8148d63ccd927f9f",
+        "android_client_info": {
+          "package_name": "com.example.meenal.petconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983061287115-ijnnhdg2v9aufiveg4ikka8h7jh4ompm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meenal.petconnect",
+            "certificate_hash": "410b8f09f5152a00a07621739680fdb0f68845c6"
+          }
+        },
+        {
+          "client_id": "983061287115-5sc75tsfop9k7pqi7d3n86k3f1p1efij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtJxcRFm-Fs2tWnr6dA5vMtnVXH7rQf5A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983061287115-5sc75tsfop9k7pqi7d3n86k3f1p1efij.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
