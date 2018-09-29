@@ -7,7 +7,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class BrowsePets extends AppCompatActivity {
+public class BrowseEvents extends AppCompatActivity {
     private ListView listView;
     private static CustomPetAdapter adapter;
     private ArrayList<PetProfile> petList;

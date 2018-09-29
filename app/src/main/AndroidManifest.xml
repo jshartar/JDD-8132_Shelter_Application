@@ -28,8 +28,12 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".event"
-            android:label="@string/title_activity_event"
+            android:name=".BrowsePets"
+            android:label="Browse Pets"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Event"
+            android:label="Events"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EventActivity"
