@@ -9,24 +9,24 @@ import java.util.ArrayList;
 
 public class BrowseEvents extends AppCompatActivity {
     private ListView listView;
-    private static CustomPetAdapter adapter;
-    private ArrayList<PetProfile> petList;
+    private static CustomEventAdapter adapter;
+    private ArrayList<EventProfile> eventList;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_browse_pets);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_browse_events);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarevent);
         setSupportActionBar(toolbar);
 
-        listView = (ListView) findViewById(R.id.listview);
-        petList = new ArrayList<>();
+        listView = (ListView) findViewById(R.id.listviewevent);
+        eventList = new ArrayList<>();
 
-        petList.add(new PetProfile("Lucy", null));
-        petList.add(new PetProfile("Molly", null));
+        eventList.add(new EventProfile("Adoption Day", null));
+        eventList.add(new EventProfile("Free Cats", null));
 
-        adapter = new CustomPetAdapter(petList, getApplicationContext());
+        adapter = new CustomEventAdapter(eventList, getApplicationContext());
         listView.setAdapter(adapter);
     }
 
