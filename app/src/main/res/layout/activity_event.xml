@@ -82,6 +82,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <TextView
+
             android:id="@+id/event_profile_aboutme_deets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -93,6 +94,7 @@
             android:layout_height="wrap_content"
             android:text="Location:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
 
         <TextView
             android:id="@+id/textView6"

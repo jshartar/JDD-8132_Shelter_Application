@@ -9,7 +9,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
 import android.widget.ImageView;
+
 import android.widget.TextView;
 
 public class EventActivity extends AppCompatActivity {
@@ -22,6 +24,7 @@ public class EventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
 //        Bundle bundle = getIntent().getExtras();
 //        if (bundle != null) {
@@ -36,6 +39,7 @@ public class EventActivity extends AppCompatActivity {
         String name = getIntent().getStringExtra("name");
         TextView name_text = (TextView) findViewById(R.id.event_profile_name);
         name_text.setText(name);
+
     }
 
 }
