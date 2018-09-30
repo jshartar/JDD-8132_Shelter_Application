@@ -1,8 +1,13 @@
 package com.example.meenal.petconnect;
 
+import android.content.Intent;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -22,9 +27,13 @@ public class BrowsePets extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listview);
         petList = new ArrayList<>();
+        final Context context = getApplicationContext();
 
-        petList.add(new PetProfile("Lucy", null));
-        petList.add(new PetProfile("Molly", null));
+        Drawable sparky = getResources().getDrawable(R.drawable.sparky);
+        Drawable kitty = getResources().getDrawable(R.drawable.kitty);
+
+        petList.add(new PetProfile("Sparky", sparky));
+        petList.add(new PetProfile("Poseidon", kitty));
 
         adapter = new CustomPetAdapter(petList, getApplicationContext());
         listView.setAdapter(adapter);
