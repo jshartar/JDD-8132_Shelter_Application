@@ -1,7 +1,12 @@
 package com.example.meenal.petconnect;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +22,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -24,7 +30,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener {
+
+    //Drawable kitty = getResources().getDrawable(R.drawable.kitty);
+    //PetProfile pet = new PetProfile("Kitty Cat the Great", kitty);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +80,9 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, BrowsePets.class));
             }
         });
+        Drawable kitty = getResources().getDrawable(R.drawable.kitty);
+        ImageView image = (ImageView) findViewById(R.id.pet_image);
+        image.setImageDrawable(kitty);
 
     }
 
@@ -83,6 +95,17 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeString(name);
+//        Bitmap bitmap = (Bitmap) ((BitmapDrawable) image).getBitmap();
+//        dest.writeParcelable(bitmap, flags);
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

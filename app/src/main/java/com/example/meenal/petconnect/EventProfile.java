@@ -23,13 +23,13 @@ public class EventProfile implements Parcelable {
         this.bitmap = bitmap;
     }
 
-    public static final Parcelable.Creator<PetProfile> CREATOR = new Parcelable.Creator<PetProfile>() {
-        public PetProfile createFromParcel(Parcel in) {
-            return new PetProfile(in);
+    public static final Parcelable.Creator<EventProfile> CREATOR = new Parcelable.Creator<EventProfile>() {
+        public EventProfile createFromParcel(Parcel in) {
+            return new EventProfile(in);
         }
 
-        public PetProfile[] newArray(int size) {
-            return new PetProfile[size];
+        public EventProfile[] newArray(int size) {
+            return new EventProfile[size];
         }
     };
 
