@@ -22,6 +22,7 @@ package com.example.meenal.petconnect;
         import android.support.design.widget.Snackbar;
         import android.util.Log;
         import android.view.View;
+        import android.widget.Button;
         import android.widget.TextView;
 
         import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -67,7 +68,7 @@ public class GoogleSignInActivity extends BaseActivity implements
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.guest_sign_in).setOnClickListener(this);
-
+        findViewById(R.id.gotologin).setOnClickListener(this);
         // [START config_signin]
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -81,6 +82,7 @@ public class GoogleSignInActivity extends BaseActivity implements
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
+
     }
 
     // [START on_start_check_user]
@@ -210,6 +212,8 @@ public class GoogleSignInActivity extends BaseActivity implements
             signIn();
         } else if (i == R.id.guest_sign_in) {
             startActivity(new Intent(GoogleSignInActivity.this, MainActivity.class));
+        } else if(i==R.id.gotologin){
+            startActivity(new Intent(GoogleSignInActivity.this, Login.class));
         }
     }
 }
