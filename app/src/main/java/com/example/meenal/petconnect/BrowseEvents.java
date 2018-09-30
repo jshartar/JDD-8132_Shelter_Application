@@ -1,5 +1,7 @@
 package com.example.meenal.petconnect;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,13 +24,16 @@ public class BrowseEvents extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listviewevent);
         eventList = new ArrayList<>();
+        final Context context = getApplicationContext();
 
-        eventList.add(new EventProfile("Adoption Day", null));
-        eventList.add(new EventProfile("Free Cats", null));
+        Drawable sparky = getResources().getDrawable(R.drawable.sparky);
+        Drawable kitty = getResources().getDrawable(R.drawable.kitty);
+
+        eventList.add(new EventProfile("Adopt-a-cat!", sparky));
+        eventList.add(new EventProfile("Adopt-a-dog!", kitty));
 
         adapter = new CustomEventAdapter(eventList, getApplicationContext());
         listView.setAdapter(adapter);
     }
-
 }
 

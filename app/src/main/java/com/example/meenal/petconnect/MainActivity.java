@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -53,13 +54,16 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, GoogleSignInActivity.class));
             }
         });
-        Button userDetail= (Button) findViewById(R.id.userdetails);
+
+        Button userDetail = (Button) findViewById(R.id.userdetails);
         userDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, UserDetails.class));
             }
         });
+
+
         Button browsePets= (Button) findViewById(R.id.bp);
         browsePets.setOnClickListener(new View.OnClickListener() {
             @Override
