@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Model model = Model.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -52,6 +54,24 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, GoogleSignInActivity.class));
             }
         });
+
+        Button userDetail = (Button) findViewById(R.id.userdetails);
+        userDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, UserDetails.class));
+            }
+        });
+
+
+        Button browsePets= (Button) findViewById(R.id.bp);
+        browsePets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, BrowsePets.class));
+            }
+        });
+
     }
 
     @Override
@@ -95,8 +115,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
+            startActivity(new Intent(MainActivity.this, BrowsePets.class));
         } else if (id == R.id.nav_slideshow) {
+            startActivity(new Intent(MainActivity.this, BrowseEvents.class));
 
         } else if (id == R.id.nav_manage) {
 

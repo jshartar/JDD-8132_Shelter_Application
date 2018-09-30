@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/event_profile_image"
+        android:id="@+id/pet_profile_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginStart="8dp"
@@ -24,7 +24,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/event_profile_name"
+        android:id="@+id/pet_profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -42,7 +42,7 @@
         app:layout_constraintVertical_bias="0.042" />
 
     <Button
-        android:id="@+id/event_profile_contactButton"
+        android:id="@+id/pet_profile_contactButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -71,30 +71,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/event_profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/pet_profile_image"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/event_profile_aboutme"
+            android:id="@+id/pet_profile_aboutme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="About: "
+            android:text="About Me: "
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <TextView
-
-            android:id="@+id/event_profile_aboutme_deets"
+            android:id="@+id/pet_profile_aboutme_deets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello guys and gals!! Its that time of year again, lets get those adoptions going and save an animal." />
+            android:text="Hello! I need lots of love and attention. My favorite thing ever is to play fetch at the park. Sorry if i bark or seem timid my last owners weren't nice to me :(" />
 
         <TextView
-            android:id="@+id/event_profile_location"
+            android:id="@+id/pet_profile_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Location:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
 
         <TextView
             android:id="@+id/textView6"
