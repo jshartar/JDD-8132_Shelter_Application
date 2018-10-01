@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="70dp"
         android:layout_weight="3"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -18,7 +18,7 @@
             android:id="@+id/google_icon"
             style="@style/ThemeOverlay.FirebaseIcon"
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="207dp"
             android:contentDescription="@string/desc_firebase_lockup"
             android:src="@drawable/dog" />
 
@@ -26,6 +26,7 @@
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/title_bottom_margin"
             android:text="PetConnect"
             android:theme="@style/ThemeOverlay.MyTitleText" />
 
@@ -39,35 +40,54 @@
             style="@style/ThemeOverlay.MyTextDetail"
             tools:text="Firebase User ID: 123456789abc" />
 
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
         <Button
             android:id="@+id/gotologin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="51dp"
+            android:layout_marginEnd="296dp"
+            android:layout_marginRight="296dp"
+            android:layout_marginBottom="11dp"
             android:background="@color/colorPrimaryDark"
-            android:text="Login"
+            android:text="login"
             android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/guest_sign_in"
-            android:layout_width="wrap_content"
+            style="@android:style/Widget.Button"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/sign_in_button"
+            android:layout_centerHorizontal="true"
             android:background="@color/colorPrimaryDark"
             android:text="Browse as Guest"
             android:textColor="#FFFFFF" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_centerInParent="true"
             android:visibility="visible"
-            tools:visibility="visible">
+            tools:visibility="gone">
 
         </com.google.android.gms.common.SignInButton>
 
-    </LinearLayout>
 
+    </RelativeLayout>
 
-</RelativeLayout>
+</LinearLayout>

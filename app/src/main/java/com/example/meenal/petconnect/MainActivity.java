@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
             startActivity(new Intent(MainActivity.this, BrowsePets.class));
         } else if (id == R.id.nav_slideshow) {
-
+            startActivity(new Intent(MainActivity.this, BrowseEvents.class));
 
         } else if (id == R.id.nav_manage) {
 
@@ -149,7 +149,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_event) {
-            startActivity(new Intent(MainActivity.this, BrowseEvents.class));
+            Intent intent = new Intent(MainActivity.this, EventActivity.class);
+            intent.putExtra("name", "Event Name");
+            intent.putExtra("details", "Event details lorem ipsum blah blah blah");
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
