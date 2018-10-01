@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final Model model = Model.getInstance();
+        Model model = Model.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -68,12 +68,7 @@ public class MainActivity extends AppCompatActivity
         userDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = model.getCurrentUser();
-                if (user != null) {
-                    startActivity(new Intent(MainActivity.this, UserDetails.class));
-                } else {
-                    startActivity(new Intent(MainActivity.this, Registration.class));
-                }
+                startActivity(new Intent(MainActivity.this, UserDetails.class));
             }
         });
 
