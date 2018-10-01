@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Model model = Model.getInstance();
+        final Model model = Model.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -68,7 +68,12 @@ public class MainActivity extends AppCompatActivity
         userDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, UserDetails.class));
+                User user = model.getCurrentUser();
+                if (user != null) {
+                    startActivity(new Intent(MainActivity.this, UserDetails.class));
+                } else {
+                    startActivity(new Intent(MainActivity.this, Registration.class));
+                }
             }
         });
 
@@ -135,24 +140,11 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_gallery) {
             startActivity(new Intent(MainActivity.this, BrowsePets.class));
-        } else if (id == R.id.nav_slideshow) {
-            startActivity(new Intent(MainActivity.this, BrowseEvents.class));
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_event) {
-            Intent intent = new Intent(MainActivity.this, EventActivity.class);
-            intent.putExtra("name", "Event Name");
-            intent.putExtra("details", "Event details lorem ipsum blah blah blah");
-            startActivity(intent);
+            startActivity(new Intent(MainActivity.this, BrowseEvents.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
