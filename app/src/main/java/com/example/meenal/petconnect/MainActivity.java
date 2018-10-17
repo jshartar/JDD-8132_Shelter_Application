@@ -1,17 +1,8 @@
 package com.example.meenal.petconnect;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.EventLog;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -24,10 +15,6 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -145,6 +132,12 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_event) {
             startActivity(new Intent(MainActivity.this, BrowseEvents.class));
+        } else if (id == R.id.nav_addPet) {
+            startActivity(new Intent(MainActivity.this, RegisterPet.class));
+        } else if (id == R.id.nav_addEvent) {
+            startActivity(new Intent(MainActivity.this, AddEvent.class));
+        } else if (id == R.id.nav_applyAdopt) {
+            startActivity(new Intent(MainActivity.this, ApplyAdoption.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
