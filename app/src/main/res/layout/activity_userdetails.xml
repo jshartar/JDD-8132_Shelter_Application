@@ -98,19 +98,6 @@
         android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-    <Button
-        android:id="@+id/button_ban"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:text="lock user account" />
-
-    <Button
-        android:id="@+id/button_unban"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:text="unlock user account" />
 
     <Space
         android:layout_width="match_parent"

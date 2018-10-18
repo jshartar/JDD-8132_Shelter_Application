@@ -40,7 +40,7 @@ public class Registration extends AppCompatActivity {
                 EditText lastName = (EditText) findViewById(R.id.editText_lastName);
                 EditText email = (EditText) findViewById(R.id.editText_email);
                 EditText phone = (EditText) findViewById(R.id.editText_phone);
-                EditText admin = (EditText) findViewById(R.id.editText_admin);
+
                 //password confirmation check
                 if (!password1.getText().toString().equals(password2.getText().toString())) {
                     Toast.makeText(Registration.this, "Can't Register: Your passwords do not match", Toast.LENGTH_SHORT).show();
@@ -68,11 +68,6 @@ public class Registration extends AppCompatActivity {
                             lastName.getText().toString(), password2.getText().toString(),
                             email.getText().toString(), "0000000000", "admin" );
 
-                    if (admin.getText().toString().equalsIgnoreCase("admin")) {
-                        _user.makeAdmin();
-                    } else {
-                        _user.demoteToUser();
-                    }
 
                     if (phone.getText().toString().isEmpty()) {
                         _user.setPhoneNumber("0000000000");

@@ -16,8 +16,6 @@ public class UserDetails extends AppCompatActivity{
 
         final Model model = Model.getInstance();
         User user = model.getCurrentUser();
-        Button ban = (Button) findViewById(R.id.button_ban);
-        Button unban = (Button) findViewById(R.id.button_unban);
 
         TextView name_text = (TextView) findViewById(R.id.text_view_name);
         TextView email_text = (TextView) findViewById(R.id.text_view_email);
@@ -45,34 +43,6 @@ public class UserDetails extends AppCompatActivity{
             type_text.setText("No");
         }
 
-        ban.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(UserDetails.this, "User Account Locked", Toast.LENGTH_SHORT).show();
-                TextView type_text = (TextView) findViewById(R.id.text_view_lockout);
-                User user1 = model.getCurrentUser();
-                user1.ban();
-                model.addBannedUser(user1);
-                type_text.setText("Yes");
-
-            }
-        });
-
-        unban.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(UserDetails.this, "User Account Unlocked", Toast.LENGTH_SHORT).show();
-                TextView type_text = (TextView) findViewById(R.id.text_view_lockout);
-
-                User user1 = model.getCurrentUser();
-                user1.unban();
-                model.removeBannedUser(user1);
-                type_text.setText("No");
-
-            }
-        });
 
     }
 }
