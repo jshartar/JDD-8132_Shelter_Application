@@ -12,6 +12,10 @@ import android.os.Parcelable;
 
 public class EventProfile implements Parcelable {
     private String name;
+    private String location;
+    private String time;
+    private String description;
+    private String date;
     private Drawable image;
     private Bitmap bitmap;
 
@@ -33,14 +37,42 @@ public class EventProfile implements Parcelable {
         }
     };
 
-    public EventProfile(String name, Drawable image) {
+    public EventProfile(String name, Drawable image, String description, String address, String time, String date) {
         this.name = name;
+        this.description = description;
+        this.location = address;
+        this.time = time;
+        this.date = date;
         Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
         if (bitmap.getRowBytes() * bitmap.getHeight() > 10000000) {
             bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
         }
         this.image = new BitmapDrawable(bitmap);
         this.bitmap = bitmap;
+    }
+
+    public EventProfile(String name, Drawable image) {
+        this.name = name;
+        this.description = " ";
+        this.location = null;
+        this.time = null;
+        this.date = null;
+        Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
+        if (bitmap.getRowBytes() * bitmap.getHeight() > 10000000) {
+            bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
+        }
+        this.image = new BitmapDrawable(bitmap);
+        this.bitmap = bitmap;
+    }
+
+    public EventProfile(String name, String address, String time, String date) {
+        this.name = name;
+        this.location = address;
+        this.time = time;
+        this.date = date;
+        this.image = null;
+        this.bitmap = null;
+        this.description = " ";
     }
 
     public EventProfile(Parcel in) {
@@ -77,5 +109,12 @@ public class EventProfile implements Parcelable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getLocation() {
+        return this.location;
+    }
+    public String getTime() {return this.time;}
+    public String getDate() {return this.date;}
+    public String getDescription() {return this.description;}
 }
 
