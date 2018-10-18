@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_apply_adoption">
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/TextInputLayout"
+        android:id="@+id/RegisterPet_Name"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -31,7 +31,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/RegisterPet_Name">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/ageInput"

@@ -20,6 +20,8 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_register_pet" />
+    <include
+        android:id="@+id/RegisterPet_SubmitButton"
+        layout="@layout/content_register_pet" />
 
 </android.support.design.widget.CoordinatorLayout>
