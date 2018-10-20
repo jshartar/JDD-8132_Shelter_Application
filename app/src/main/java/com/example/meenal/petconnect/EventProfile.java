@@ -37,6 +37,16 @@ public class EventProfile implements Parcelable {
         }
     };
 
+    public EventProfile() {
+        this.name = "";
+        this.location = "";
+        this.time = "";
+        this.date = "";
+        this.image = null;
+        this.bitmap = null;
+        this.description = "";
+    }
+
     public EventProfile(String name, Drawable image, String description, String address, String time, String date) {
         this.name = name;
         this.description = description;
@@ -65,7 +75,7 @@ public class EventProfile implements Parcelable {
         this.bitmap = bitmap;
     }
 
-    public EventProfile(String name, String address, String time, String date) {
+    public EventProfile(String date, String address, String name , String time) {
         this.name = name;
         this.location = address;
         this.time = time;
@@ -109,6 +119,16 @@ public class EventProfile implements Parcelable {
     public void setName(String name) {
         this.name = name;
     }
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    public void setTime(String time) {
+        this.time = time;
+    }
+    public void setDate(String date) {
+        this.date = date;
+    }
+    public void setDescription(String description) { this.description = description;}
 
     public String getLocation() {
         return this.location;
@@ -116,5 +136,11 @@ public class EventProfile implements Parcelable {
     public String getTime() {return this.time;}
     public String getDate() {return this.date;}
     public String getDescription() {return this.description;}
+
+    public String toString() {
+        String string = "Date: " + this.date + ", Location: " + this.location +
+                ", Name: " + this.name + ", Time: " + this.time;
+        return string;
+    }
 }
 

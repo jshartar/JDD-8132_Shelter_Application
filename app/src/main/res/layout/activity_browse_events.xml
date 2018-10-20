@@ -21,7 +21,7 @@
         <ListView
             android:id="@+id/listviewevent"
             android:layout_width="match_parent"
-            android:layout_height="517dp"
+            android:layout_height="500dp"
             android:background="@color/common_google_signin_btn_text_dark_default"
             android:entries="@id/imageView" />
 
