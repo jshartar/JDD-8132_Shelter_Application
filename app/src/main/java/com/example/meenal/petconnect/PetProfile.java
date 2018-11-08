@@ -15,6 +15,15 @@ public class PetProfile implements Parcelable {
     private String name;
     private Drawable image;
     private Bitmap bitmap;
+    private String location;
+    private String age;
+    private String breed;
+    private String description;
+    private String fee;
+    private String pet;
+    private String fixed;
+    private String size;
+    private String childFriendly;
 
     public Bitmap getBitmap() {
         return bitmap;
@@ -34,6 +43,20 @@ public class PetProfile implements Parcelable {
         }
     };
 
+    public PetProfile() {
+        this.name = "animal";
+        this.location = "";
+        this.age = "0";
+        this.breed = "";
+        this.image = null;
+        this.bitmap = null;
+        this.description = "Pet";
+        this.fee = "0";
+        this.pet = "Dog";
+        this.fixed= "No";
+        this.size="";
+        this.childFriendly = "No";
+    }
     public PetProfile(String name, Drawable image) {
         this.name = name;
         Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
@@ -42,7 +65,38 @@ public class PetProfile implements Parcelable {
         }
         this.image = new BitmapDrawable(bitmap);
         this.bitmap = bitmap;
+        this.description = "Pet";
+        this.fee = "0";
+        this.pet = "Dog";
+        this.fixed= "No";
+        this.size="";
+        this.childFriendly = "No";
+        this.age = "0";
+        this.breed = "";
+        this.location = "";
     }
+
+    public PetProfile(String name, String age, String description, String fixed, String fee, String childFriendly,String breed, String location, String pet, String size) {
+        this.name = name;
+//        Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
+//        if (bitmap.getRowBytes() * bitmap.getHeight() > 10000000) {
+//            bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
+//        }
+//        this.image = new BitmapDrawable(bitmap);
+//        this.bitmap = bitmap;
+        this.description = description;
+        this.fee = fee;
+        this.pet = pet;
+        this.fixed= fixed;
+        this.size=size;
+        this.childFriendly = childFriendly;
+        this.age = age;
+        this.breed = breed;
+        this.location = location;
+        this.image = null;
+        this.bitmap = null;
+    }
+
 
     public PetProfile(Parcel in) {
 
