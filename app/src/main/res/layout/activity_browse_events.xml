@@ -18,6 +18,17 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <EditText
+            android:id="@+id/eventsearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/common_google_signin_btn_text_dark_default"
+            android:ems="10"
+            android:hint="search"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimaryDark"
+            android:inputType="textPersonName" />
+
         <ListView
             android:id="@+id/listviewevent"
             android:layout_width="match_parent"

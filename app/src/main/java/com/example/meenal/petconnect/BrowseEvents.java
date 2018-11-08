@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.EventLog;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.firebase.FirebaseApp;
@@ -26,7 +29,7 @@ import java.util.Map;
 public class BrowseEvents extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private ListView listView;
-    private static CustomEventAdapter adapter;
+    private CustomEventAdapter adapter;
     private ArrayList<EventProfile> eventList;
 
     @Override
@@ -35,6 +38,7 @@ public class BrowseEvents extends AppCompatActivity {
         setContentView(R.layout.activity_browse_events);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarevent);
         setSupportActionBar(toolbar);
+        EditText search = (EditText) findViewById(R.id.eventsearch);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Events");
         Query mEvents = mDatabase.orderByKey();
@@ -63,6 +67,23 @@ public class BrowseEvents extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                (BrowseEvents.this).adapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
 
             }
         });
