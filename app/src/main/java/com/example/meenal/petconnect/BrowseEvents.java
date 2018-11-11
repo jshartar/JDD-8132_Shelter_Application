@@ -1,6 +1,9 @@
 package com.example.meenal.petconnect;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +16,8 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -44,25 +51,50 @@ public class BrowseEvents extends AppCompatActivity {
         Query mEvents = mDatabase.orderByKey();
 
         eventList = new ArrayList<>();
+        Drawable sparky = getResources().getDrawable(R.drawable.sparky);
+        Drawable kitty = getResources().getDrawable(R.drawable.kitty);
+
+        eventList.add(new EventProfile("Adopt-a-cat!", sparky));
+        eventList.add(new EventProfile("Adopt-a-dog!", kitty));
 
         mEvents.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String t1 = (String) ((Map) snapshot.getValue()).get("Date");
-                    String t2 = (String) ((Map) snapshot.getValue()).get("Location");
-                    String t3 = (String) ((Map) snapshot.getValue()).get("Name");
-                    String t4 = (String) ((Map) snapshot.getValue()).get("Time");
+                    final String t1 = (String) ((Map) snapshot.getValue()).get("Date");
+                    final String t2 = (String) ((Map) snapshot.getValue()).get("Location");
+                    final String t3 = (String) ((Map) snapshot.getValue()).get("Name");
+                    final String t4 = (String) ((Map) snapshot.getValue()).get("Time");
+                    final String t5 = (String) ((Map) snapshot.getValue()).get("Image");
+                    if (t5 != null) {
+                        FirebaseStorage storage = FirebaseStorage.getInstance();
+                        StorageReference storageRef = storage.getReference();
+                        StorageReference petRef = storageRef.child(t5);
 
-                    EventProfile event = new EventProfile(t1,t2,t3,t4);
-//                    Log.d("Hi again", event.toString());
-//                    Log.d("Hi again", (String) ((Map) snapshot.getValue()).get("Date"));
+                        final long ONE_MEGABYTE = 1024 * 1024;
+                        petRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                            @Override
+                            public void onSuccess(byte[] bytes) {
+                                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                                BitmapDrawable bitmap = new BitmapDrawable(bmp);
 
-                    eventList.add(event);
+                                EventProfile event = new EventProfile(t1, t2, t3, t4, bitmap);
+                                eventList.add(event);
+
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                // Handle any errors
+                            }
+                        });
+                    } else {
+                        eventList.add(new EventProfile(t1, t2, t3, t4));
+                    }
 
                 }
                 listView.setAdapter(adapter);
-
             }
 
             @Override
@@ -91,11 +123,11 @@ public class BrowseEvents extends AppCompatActivity {
 //        Log.d("Hi again", eventList.toString());
 //        Log.d("Hi again", "LAEHF;LASDKJF;ASLDKFJA;SLKDFJ");
 
-        Drawable sparky = getResources().getDrawable(R.drawable.sparky);
-        Drawable kitty = getResources().getDrawable(R.drawable.kitty);
-
-        eventList.add(new EventProfile("Adopt-a-cat!", sparky));
-        eventList.add(new EventProfile("Adopt-a-dog!", kitty));
+//        Drawable sparky = getResources().getDrawable(R.drawable.sparky);
+//        Drawable kitty = getResources().getDrawable(R.drawable.kitty);
+//
+//        eventList.add(new EventProfile("Adopt-a-cat!", sparky));
+//        eventList.add(new EventProfile("Adopt-a-dog!", kitty));
 
         listView = (ListView) findViewById(R.id.listviewevent);
         final Context context = getApplicationContext();
