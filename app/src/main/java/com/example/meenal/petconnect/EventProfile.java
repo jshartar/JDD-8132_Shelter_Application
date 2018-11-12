@@ -80,8 +80,19 @@ public class EventProfile implements Parcelable {
         this.location = address;
         this.time = time;
         this.date = date;
-        this.image = null;
-        this.bitmap = null;
+    }
+
+    public EventProfile(String date, String address, String name , String time, Drawable image) {
+        this.name = name;
+        this.location = address;
+        this.time = time;
+        this.date = date;
+        Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
+        if (bitmap.getRowBytes() * bitmap.getHeight() > 10000000) {
+            bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
+        }
+        this.image = new BitmapDrawable(bitmap);
+        this.bitmap = bitmap;
         this.description = " ";
     }
 
