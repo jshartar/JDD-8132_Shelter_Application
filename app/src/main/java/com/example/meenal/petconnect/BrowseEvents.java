@@ -1,6 +1,7 @@
 package com.example.meenal.petconnect;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +11,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.EventLog;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -34,6 +37,7 @@ public class BrowseEvents extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("HELPME", "HALPHALPHALP");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse_events);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarevent);
@@ -101,7 +105,16 @@ public class BrowseEvents extends AppCompatActivity {
         final Context context = getApplicationContext();
         adapter = new CustomEventAdapter(eventList, getApplicationContext());
         listView.setAdapter(adapter);
-//        Log.d("Hi again", "******* " + eventList.toString());
+        Log.d("HELPME", "HALP is not here");
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(BrowseEvents.this, EventActivity.class);
+                i.putExtra("name", eventList.get(position).getName());
+                i.putExtra("image", eventList.get(position).getBitmap());
+                startActivity(i);
+            }
+        });
 
     }
 }
