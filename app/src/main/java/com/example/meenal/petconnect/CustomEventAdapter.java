@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CustomEventAdapter extends ArrayAdapter<EventProfile> implements View.OnClickListener {
+public class CustomEventAdapter extends ArrayAdapter<EventProfile> {
 
     private ArrayList<EventProfile> dataSet;
     private Context context;
@@ -28,8 +28,10 @@ public class CustomEventAdapter extends ArrayAdapter<EventProfile> implements Vi
         this.context = con;
     }
 
+    /*
     @Override
     public void onClick(View v) {
+
         Intent intent = new Intent(getContext(), EventActivity.class);
 //        PetProfile pet =  new PetProfile(this.dataSet.get(pos).getName(), this.dataSet.get(pos).getImage());
 //        Bundle bundle = new Bundle();
@@ -40,7 +42,7 @@ public class CustomEventAdapter extends ArrayAdapter<EventProfile> implements Vi
         getContext().startActivity(intent);
 
     }
-
+*/
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -66,7 +68,7 @@ public class CustomEventAdapter extends ArrayAdapter<EventProfile> implements Vi
 
         viewHolder.eventName.setText(ev.getName());
         viewHolder.eventImage.setImageDrawable(ev.getImage());
-        viewHolder.eventImage.setOnClickListener(this);
+        //viewHolder.eventImage.setOnClickListener(this);
         viewHolder.eventImage.setTag(position);
 
         return convertView;
