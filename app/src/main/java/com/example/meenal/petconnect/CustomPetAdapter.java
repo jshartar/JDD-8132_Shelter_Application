@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class CustomPetAdapter extends ArrayAdapter<PetProfile> {
+public class CustomPetAdapter extends ArrayAdapter<PetProfile> implements View.OnClickListener {
 
     private ArrayList<PetProfile> dataSet;
     private Context context;
@@ -35,7 +35,6 @@ public class CustomPetAdapter extends ArrayAdapter<PetProfile> {
         this.context = con;
     }
 
-    /*
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(getContext(), PetProfile_Activity.class);
@@ -48,7 +47,6 @@ public class CustomPetAdapter extends ArrayAdapter<PetProfile> {
         getContext().startActivity(intent);
 
     }
-    */
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -75,7 +73,7 @@ public class CustomPetAdapter extends ArrayAdapter<PetProfile> {
 
         viewHolder.petName.setText(pet.getName());
         viewHolder.petImage.setImageDrawable(pet.getImage());
-        //viewHolder.petImage.setOnClickListener(this);
+        viewHolder.petImage.setOnClickListener(this);
         viewHolder.petImage.setTag(position);
 
         return convertView;

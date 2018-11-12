@@ -123,15 +123,6 @@ public class BrowsePets extends AppCompatActivity {
 
         adapter = new CustomPetAdapter(petList, getApplicationContext());
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(BrowsePets.this, PetProfile_Activity.class);
-                i.putExtra("name", petList.get(position).getName());
-                i.putExtra("image", petList.get(position).getBitmap());
-                startActivity(i);
-            }
-        });
     }
 
 }
