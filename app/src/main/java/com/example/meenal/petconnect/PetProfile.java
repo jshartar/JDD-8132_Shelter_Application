@@ -78,4 +78,9 @@ public class PetProfile implements Parcelable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String toString() {
+        String string = this.name;
+        return string;
+    }
 }
