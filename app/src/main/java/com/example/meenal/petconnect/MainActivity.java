@@ -64,6 +64,13 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        Button browseEvents= (Button) findViewById(R.id.browseEvents);
+        browseEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, BrowseEvents.class));
+            }
+        });
 
         Button browsePets= (Button) findViewById(R.id.bp);
         browsePets.setOnClickListener(new View.OnClickListener() {
@@ -72,15 +79,6 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, BrowsePets.class));
             }
         });
-
-        Button browseEvents= (Button) findViewById(R.id.be);
-        browseEvents.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, BrowseEvents.class));
-            }
-        });
-
         Drawable kitty = getResources().getDrawable(R.drawable.kitty);
         ImageView image = (ImageView) findViewById(R.id.pet_image);
         image.setImageDrawable(kitty);

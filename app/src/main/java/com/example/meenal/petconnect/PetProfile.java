@@ -15,6 +15,7 @@ public class PetProfile implements Parcelable {
     private String name;
     private Drawable image;
     private Bitmap bitmap;
+    private long age;
 
     public Bitmap getBitmap() {
         return bitmap;
@@ -44,6 +45,22 @@ public class PetProfile implements Parcelable {
         this.bitmap = bitmap;
     }
 
+    public PetProfile(String name, long age, Drawable image) {
+        this.name = name;
+        this.age = age;
+        Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
+        if (bitmap.getRowBytes() * bitmap.getHeight() > 10000000) {
+            bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
+        }
+        this.image = new BitmapDrawable(bitmap);
+        this.bitmap = bitmap;
+    }
+
+    public PetProfile(String name, long age) {
+        this.name = name;
+        this.age = age;
+    }
+
     public PetProfile(Parcel in) {
 
         this.name = in.readString();
@@ -63,6 +80,15 @@ public class PetProfile implements Parcelable {
         dest.writeParcelable(bitmap, flags);
     }
 
+    public void setBitmap(Drawable image) {
+        Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
+        if (bitmap.getRowBytes() * bitmap.getHeight() > 10000000) {
+            bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
+        }
+        this.image = new BitmapDrawable(bitmap);
+        this.bitmap = bitmap;
+    }
+
     public Drawable getImage() {
         return this.image;
     }
@@ -77,5 +103,14 @@ public class PetProfile implements Parcelable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public long getAge() { return age; }
+
+    public void setAge(long age) { this.age = age; }
+
+    public String toString() {
+        String string = this.name;
+        return string;
     }
 }

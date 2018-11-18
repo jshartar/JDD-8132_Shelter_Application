@@ -10,18 +10,18 @@
             android:title="Apply for Adoption" />
         <item
             android:id="@+id/nav_event"
-            android:icon="@drawable/ic_menu_share"
-            android:title="Events" />
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Browse Events" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_menu_slideshow"
             android:title="Browse Pets" />
     </group>
     <group >
         <item
             android:id="@+id/nav_addPet"
             android:icon="@drawable/ic_menu_send"
-            android:title="Register Pet" />
+            android:title="Add Pet" />
         <item
             android:id="@+id/nav_addEvent"
             android:icon="@drawable/ic_menu_send"
