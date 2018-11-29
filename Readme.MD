@@ -5,7 +5,7 @@
 #### Bug fixes made since the last release
 - Browse Pets and Browse Events support scrollable views.
 - Upon opening Browse Pets, the keyboard does not automatically pop up.
-#### Known bugs and defects -- you should also include here any functionality you promised the customer but is missing in the release
+#### Known bugs and defects
 - Any new shelters added to the database should also update information
 in the Firebase database under the Shelter tab.
 
@@ -28,7 +28,7 @@ in the Firebase database under the Shelter tab.
 #### Build instructions:
 1. Download the code from Github by cloning or downloading ZIP.
 2. Open the project in Android Studio.
-3. Sync the project so that gradle.
+3. Sync the project to that gradle.
 4. Build project.
 5. Run on Emulator or Run via USB connected device
 
