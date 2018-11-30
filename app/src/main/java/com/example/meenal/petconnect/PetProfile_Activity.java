@@ -1,5 +1,6 @@
 package com.example.meenal.petconnect;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -7,9 +8,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,6 +34,8 @@ import java.util.ArrayList;
 
 public class PetProfile_Activity extends AppCompatActivity {
     private PetProfile pet;
+    private Button shelterInfoButton;
+    private String petLocation;
 
 
     @Override
@@ -49,7 +55,7 @@ public class PetProfile_Activity extends AppCompatActivity {
         final ImageView profile_image = (ImageView) findViewById(R.id.pet_profile_image);
 //        profile_image.setImageDrawable(pic);
 
-        String name = getIntent().getStringExtra("name");
+        final String name = getIntent().getStringExtra("name");
         final TextView name_text = (TextView) findViewById(R.id.pet_profile_name);
         name_text.setText(name);
 
@@ -232,6 +238,7 @@ public class PetProfile_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String aboutme = dataSnapshot.getValue().toString();
+                petLocation = aboutme;
                 location_text.setText(aboutme);
 
             }
@@ -244,5 +251,35 @@ public class PetProfile_Activity extends AppCompatActivity {
 
         // ------ End of Data Loading ------ //
 
+
+        // Shelter Info Popup
+        shelterInfoButton = (Button) findViewById(R.id.pet_profile_contactButton);
+        shelterInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PetProfile_Activity.this, ShelterInfoActivity.class);
+                i.putExtra("name", petLocation);
+                startActivity(i);
+
+
+
+            }
+        });
+
     }
+
+
+
+//    public String getShelter() {
+//        return petLocation;
+//    }
+//
+//    public String[] getShelterInfo(String location) {
+//        String[] result = new String[2];
+//
+//        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+//        DatabaseReference petRef = database.child("Shelter").child(location);
+//
+//        return result;
+//    }
 }

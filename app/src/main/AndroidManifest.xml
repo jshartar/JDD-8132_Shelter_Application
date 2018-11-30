@@ -94,6 +94,9 @@
             android:name=".ApplyAdoption"
             android:label="Apply For Adoption"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".ShelterInfoActivity"
+            android:theme="@style/AppTheme.CustomTheme"></activity>
+
     </application>
 
 </manifest>
