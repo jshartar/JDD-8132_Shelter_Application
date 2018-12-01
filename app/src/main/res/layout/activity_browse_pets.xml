@@ -8,7 +8,7 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
@@ -34,12 +34,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <ListView
-            android:id="@+id/listview"
-            android:layout_width="match_parent"
-            android:layout_height="517dp"
-            android:background="@color/common_google_signin_btn_text_dark_default"
-            android:entries="@id/imageView" />
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/grey_100"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <ListView
+                android:cacheColorHint="#00000000"
+                android:layout_width="fill_parent"
+                android:scrollbarThumbVertical="@android:color/darker_gray"
+                android:scrollbarSize="8dip"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:id="@+id/listview" />
+
+        </LinearLayout>
 
     </android.support.design.widget.AppBarLayout>
 

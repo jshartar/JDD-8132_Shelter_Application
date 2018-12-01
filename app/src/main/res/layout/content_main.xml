@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.206"
+        app:layout_constraintVertical_bias="0.159"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -45,8 +45,8 @@
 
     <Button
         android:id="@+id/signout"
-        android:layout_width="93dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
@@ -63,14 +63,14 @@
 
     <Button
         android:id="@+id/userdetails"
-        android:layout_width="129dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         android:text="User Details"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/browseEvents"
@@ -80,14 +80,14 @@
 
     <Button
         android:id="@+id/bp"
-        android:layout_width="129dp"
-        android:layout_height="44dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         android:text="Browse Pets"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/signout"
@@ -107,14 +107,14 @@
 
     <Button
         android:id="@+id/browseEvents"
-        android:layout_width="129dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         android:text="Browse Events"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/bp"
