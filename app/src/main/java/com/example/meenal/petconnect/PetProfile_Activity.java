@@ -66,30 +66,31 @@ public class PetProfile_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() != null) {
                     final String picID = dataSnapshot.getValue().toString();
+
+
+                    FirebaseStorage storage = FirebaseStorage.getInstance();
+                    StorageReference storageRef = storage.getReference();
+                    StorageReference petRef = storageRef.child(picID);
+
+                    final long ONE_MEGABYTE = 1024 * 1024;
+                    petRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                        @Override
+                        public void onSuccess(byte[] bytes) {
+                            // Data for "images/island.jpg" is returns, use this as needed
+                            Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                            //                Bitmap mutableBitmap = bmp.copy(Bitmap.Config.ARGB_8888, true);
+                            BitmapDrawable bitmap = new BitmapDrawable(bmp);
+
+                            profile_image.setImageDrawable(bitmap);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            name_text.setText(exception.toString());
+                            // Handle any errors
+                        }
+                    });
                 }
-
-                FirebaseStorage storage = FirebaseStorage.getInstance();
-                StorageReference storageRef = storage.getReference();
-                StorageReference petRef = storageRef.child(picID);
-
-                final long ONE_MEGABYTE = 1024 * 1024;
-                petRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                    @Override
-                    public void onSuccess(byte[] bytes) {
-                        // Data for "images/island.jpg" is returns, use this as needed
-                        Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-//                Bitmap mutableBitmap = bmp.copy(Bitmap.Config.ARGB_8888, true);
-                        BitmapDrawable bitmap = new BitmapDrawable(bmp);
-
-                        profile_image.setImageDrawable(bitmap);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        name_text.setText(exception.toString());
-                        // Handle any errors
-                    }
-                });
             }
 
             @Override
