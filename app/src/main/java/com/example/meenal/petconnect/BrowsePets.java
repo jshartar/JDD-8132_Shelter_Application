@@ -1,3 +1,9 @@
+/**
+ *  Browse Pets
+ */
+
+// --- Dependencies --- //
+
 package com.example.meenal.petconnect;
 
 import android.content.Intent;
@@ -37,28 +43,39 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Map;
+// ---
 
+/**
+ *  Browse Pets Class and Avtivity
+ */
 public class BrowsePets extends AppCompatActivity {
+
+    // --- Global Variables --- ///
     private ListView listView;
     private static CustomPetAdapter adapter;
     private ArrayList<PetProfile> petList;
     private Spinner sortSpinner;
+    // ---
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse_pets);
+
+        // - Pull Objects from the Screen to Load Pet Profiles - //
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         EditText search = (EditText) findViewById(R.id.petsearch);
         listView = (ListView) findViewById(R.id.listview);
         petList = new ArrayList<>();
-        final Context context = getApplicationContext();
-
-
         String[] sortOptions = {"Sort", "Youngest to Oldest", "Oldest to Youngest"};
         sortSpinner = (Spinner) findViewById(R.id.sortMenu);
+        // ---
+
+        /**
+         *  This Listener will contstantly check for changes, from the user, for sorting methods
+         */
         sortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -95,17 +112,18 @@ public class BrowsePets extends AppCompatActivity {
             }
         });
 
+        // - Set Spinner Adapter - //
         ArrayAdapter sortAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, sortOptions);
         sortAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sortSpinner.setAdapter(sortAdapter);
+        // ---
 
-
-
-//        final Drawable sparky = getResources().getDrawable(R.drawable.sparky);
-//        final Drawable kitty = getResources().getDrawable(R.drawable.kitty);
-//        final PetProfile pet = new PetProfile("Arya",kitty);
-
+        // --- Get Firebase, backend, reference to pull data from --- //
         final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Dogs");
+
+        /**
+         *  This Listener will load 25 pet profile in alphabetical order anytime the database is changed
+         */
         ref.orderByChild("Name").limitToFirst(25).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -117,8 +135,6 @@ public class BrowsePets extends AppCompatActivity {
                 mPets.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        final String t1 = (String) ((Map) snapshot.getValue()).get("Age");
-//                        final int age = Integer.parseInt(t1.split(" ")[0]);
                         final long age = (Long) ((Map) snapshot.getValue()).get("Age");
                         final String t5 = (String) ((Map) snapshot.getValue()).get("Pic");
                         if (t5 != null) {
@@ -154,43 +170,6 @@ public class BrowsePets extends AppCompatActivity {
 
                     }
                 });
-
-//                tempRef.child("Pic").addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        if (dataSnapshot.getValue() != null) {
-//                            final String picID = dataSnapshot.getValue().toString();
-//
-//                            FirebaseStorage storage = FirebaseStorage.getInstance();
-//                            StorageReference storageRef = storage.getReference();
-//                            StorageReference petRef = storageRef.child(picID);
-//
-//                            final long ONE_MEGABYTE = 1024 * 1024;
-//                            petRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-//                                @Override
-//                                public void onSuccess(byte[] bytes) {
-//                                    Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-//                                    BitmapDrawable bitmap = new BitmapDrawable(bmp);
-//
-//                                    petList.add(new PetProfile(name, bitmap));
-//
-//
-//                                }
-//                            }).addOnFailureListener(new OnFailureListener() {
-//                                @Override
-//                                public void onFailure(@NonNull Exception exception) {
-//                                    // Handle any errors
-//                                }
-//                            });
-//
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                    }
-//                });
             }
 
             @Override
@@ -230,12 +209,6 @@ public class BrowsePets extends AppCompatActivity {
 
             }
         });
-
-//        Drawable sparky = getResources().getDrawable(R.drawable.sparky);
-//        Drawable kitty = getResources().getDrawable(R.drawable.kitty);
-//
-//        petList.add(new PetProfile("Sparky", sparky));
-//        petList.add(new PetProfile("Poseidon", kitty));
 
         adapter = new CustomPetAdapter(petList, getApplicationContext());
         listView.setAdapter(adapter);

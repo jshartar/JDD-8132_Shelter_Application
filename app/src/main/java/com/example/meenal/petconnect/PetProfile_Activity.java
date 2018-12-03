@@ -64,7 +64,9 @@ public class PetProfile_Activity extends AppCompatActivity {
         tempRef.child("Pic").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                final String picID = dataSnapshot.getValue().toString();
+                if (dataSnapshot.getValue() != null) {
+                    final String picID = dataSnapshot.getValue().toString();
+                }
 
                 FirebaseStorage storage = FirebaseStorage.getInstance();
                 StorageReference storageRef = storage.getReference();
