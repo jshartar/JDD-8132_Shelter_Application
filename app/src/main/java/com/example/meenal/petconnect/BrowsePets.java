@@ -135,7 +135,7 @@ public class BrowsePets extends AppCompatActivity {
                 mPets.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        final long age = (Long) ((Map) snapshot.getValue()).get("Age");
+                        final long age = (Long) ((Map) snapshot.getValue()).get("Date");
                         final String t5 = (String) ((Map) snapshot.getValue()).get("Pic");
                         if (t5 != null) {
                             FirebaseStorage storage = FirebaseStorage.getInstance();
