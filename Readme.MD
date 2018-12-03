@@ -8,6 +8,7 @@
 #### Known bugs and defects
 - Any new shelters added to the database should also update information
 in the Firebase database under the Shelter tab.
+- If image from database not png it will crash app or return to main menu.
 
 
 # Install Guide
